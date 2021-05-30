@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
 
   # POST /categories or /categories.json
   def create
+    params[:category][:income] = nil if params[:category][:income] == "neutral"
     @category = Category.new(category_params)
 
     respond_to do |format|
@@ -31,6 +32,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
     respond_to do |format|
+      params[:category][:income] = nil if params[:category][:income] == "neutral"
       if @category.update(category_params)
         format.html { redirect_to categories_url, notice: 'Category was successfully updated.' }
       else

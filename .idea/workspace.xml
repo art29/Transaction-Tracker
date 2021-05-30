@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d09681bf-a89d-4e77-a9f6-9dd5f321bfcd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/transaction.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/transaction.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc4c72cc-4b32-4435-96ec-2eab40e881f2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc4c72cc-4b32-4435-96ec-2eab40e881f2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc4c72cc-4b32-4435-96ec-2eab40e881f2/storage_v2/_src_/database/dfrtfdmnn6gbmp.KVY-HA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc4c72cc-4b32-4435-96ec-2eab40e881f2/storage_v2/_src_/database/dfrtfdmnn6gbmp.KVY-HA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/categories/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/_form.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +178,7 @@
       <workItem from="1622306941870" duration="24463000" />
       <workItem from="1622346366732" duration="2150000" />
       <workItem from="1622389607958" duration="17000" />
-      <workItem from="1622389628013" duration="668000" />
+      <workItem from="1622389628013" duration="1608000" />
     </task>
     <servers />
   </component>
@@ -193,6 +197,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/transaction@Development__transaction.rcov" NAME="Development: transaction Coverage Results" MODIFIED="1622389719908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="transaction" />
+    <SUITE FILE_PATH="coverage/transaction@Development__transaction.rcov" NAME="Development: transaction Coverage Results" MODIFIED="1622390887709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="transaction" />
   </component>
 </project>
