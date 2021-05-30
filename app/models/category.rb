@@ -3,6 +3,6 @@ class Category < ApplicationRecord
   has_many :transactions
 
   validates :name, presence: true
-  validates :income, inclusion: { in: [true, false] }
+  validates :income, inclusion: { in: [true, false, nil] }
   validates :user_id, presence: true
 end
