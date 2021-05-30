@@ -1,0 +1,34 @@
+<%= form_with(model: category) do |f| %>
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :name, "Category Name", { class: "form-label"} %>
+    <%= f.text_field :name, { class: "form-control", placeholder: "Food", required: true } %>
+  </div>
+
+  <div class="form-check">
+    <%= f.radio_button :income, true, class: "form-check-input" %>
+    <%= f.label :income, "Income", { class: "form-label"} %>
+  </div>
+
+  <div class="form-check">
+    <%= f.radio_button :income, false, class: "form-check-input" %>
+    <%= f.label :income, "Expenses", { class: "form-label"} %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: @user.id, required: true %>
+
+  <div class="actions">
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+<% end %>
