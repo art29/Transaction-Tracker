@@ -5,9 +5,6 @@
     </a>
 
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-      <a class="me-3 py-2 text-dark text-decoration-none" href="#features">Features</a>
-      <a class="me-3 py-2 text-dark text-decoration-none" href="#support">Support</a>
-
       <% if user_signed_in? %>
         <%= link_to "My Transactions", transactions_path, class: "me-3 py-2 text-dark text-decoration-none" %>
         <%= link_to "My Account", edit_user_registration_path, class: "me-3 py-2 text-dark text-decoration-none" %>

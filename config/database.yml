@@ -20,14 +20,14 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  port: 5432
-  user: postgres
-  password: postgres
+  host: <%= Rails.application.credentials.dig(:development, :database, :host) %>
+  port: <%= Rails.application.credentials.dig(:development, :database, :port) %>
+  user: <%= Rails.application.credentials.dig(:development, :database, :user) %>
+  password: <%= Rails.application.credentials.dig(:development, :database, :password) %>
 
 development:
   <<: *default
-  database: transaction_development
+  database: <%= Rails.application.credentials.dig(:development, :database, :database) %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -85,8 +85,8 @@ test:
 #
 production:
   <<: *default
-  database: dfrtfdmnn6gbmp
-  host: ec2-3-212-75-25.compute-1.amazonaws.com
-  port: 5432
-  user: wcxulyzpeplsxf
-  password: 2bb487ad4a6efccd4a9194ab71ee65f66d97e4b0c8417644f19f76f98e7f9816
+  database: <%= Rails.application.credentials.dig(:production, :database, :database) %>
+  host: <%= Rails.application.credentials.dig(:production, :database, :host) %>
+  port: <%= Rails.application.credentials.dig(:production, :database, :port) %>
+  user: <%= Rails.application.credentials.dig(:production, :database, :user) %>
+  password: <%= Rails.application.credentials.dig(:production, :database, :password) %>
