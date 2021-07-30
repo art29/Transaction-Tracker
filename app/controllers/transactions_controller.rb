@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! # Make sure user is signed in
   before_action :set_transaction, only: %i[edit update destroy]
 
   # GET /transactions or /transactions.json
@@ -17,6 +17,7 @@ class TransactionsController < ApplicationController
       format.html
     end
   end
+
   # GET /transactions/new
   def new
     @transaction = Transaction.new
@@ -59,6 +60,7 @@ class TransactionsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = Transaction.find(params[:id])
