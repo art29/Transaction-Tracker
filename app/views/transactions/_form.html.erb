@@ -22,10 +22,32 @@
   </div>
 
   <div class="mb-3">
-    <%= f.label :price, "Price", { class: "form-label"} %>
-    <div class="input-group">
-      <div class="input-group-text" id="btnGroupAddon">$</div>
-      <%= f.number_field :price, { class: "form-control", placeholder: "19.84", step: ".01", required: true } %>
+    <div class="row" x-data="currency" x-init="
+    inputPrice = <%= transaction.present? && transaction.price.present? ? transaction.price : 0.00 %>;
+    convertedPrice = <%= transaction.present? && transaction.price.present? ? transaction.price : 0.00 %>;">
+      <div class="col-md-6">
+        <%= f.label :price, "Price", { class: "form-label"} %>
+        <div class="input-group">
+          <div class="input-group-text">$</div>
+          <input type="number" class="form-control" placeholder="19.84" step=".01" x-model="inputPrice" @change.debounce="changeCurrency" required>
+          <select class="form-select" x-model="currency" @change.debounce="changeCurrency">
+            <option value="CAD" selected>CAD</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="AUD">AUD</option>
+            <option value="AUD">JPY</option>
+            <option value="AUD">NOK</option>
+            <option value="AUD">GBP</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :price, "CAD Price", { class: "form-label"} %>
+        <div class="input-group">
+          <div class="input-group-text">$</div>
+          <input type="number" name="transaction[price]" class="form-control" placeholder="19.84" step=".01" x-model="convertedPrice" required>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -40,3 +62,24 @@
     <%= f.submit "Submit", class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('currency', () => ({
+            inputPrice: 0.00,
+            currency: 'CAD',
+            convertedPrice: 0.00,
+
+            changeCurrency() {
+                fetch(`https://freecurrencyapi.net/api/v2/latest?apikey=e65d3140-6968-11ec-9481-f9819ded001b&base_currency=${this.currency}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.convertedPrice = (data.data['CAD'] * this.inputPrice).toFixed(2);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            },
+        }))
+    })
+</script>
