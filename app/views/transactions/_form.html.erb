@@ -1,3 +1,4 @@
+
 <%= form_with(model: transaction) do |f| %>
   <% if transaction.errors.any? %>
     <div class="alert alert-danger" id="error_explanation">
@@ -22,7 +23,7 @@
   </div>
 
   <div class="mb-3">
-    <div class="row" x-data="currency" x-init="
+    <div class="row" x-data="currencyData()" x-init="
     inputPrice = <%= transaction.present? && transaction.price.present? ? transaction.price : 0.00 %>;
     convertedPrice = <%= transaction.present? && transaction.price.present? ? transaction.price : 0.00 %>;">
       <div class="col-md-6">
@@ -64,14 +65,14 @@
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('currency', () => ({
+    currencyData = () => {
+        return {
             inputPrice: 0.00,
             currency: 'CAD',
             convertedPrice: 0.00,
 
-            changeCurrency() {
-                fetch(`https://freecurrencyapi.net/api/v2/latest?apikey=e65d3140-6968-11ec-9481-f9819ded001b&base_currency=${this.currency}`)
+            changeCurrency: async function() {
+                await fetch(`https://freecurrencyapi.net/api/v2/latest?apikey=e65d3140-6968-11ec-9481-f9819ded001b&base_currency=${this.currency}`)
                     .then(response => response.json())
                     .then(data => {
                         this.convertedPrice = (data.data['CAD'] * this.inputPrice).toFixed(2);
@@ -80,6 +81,6 @@
                         console.error(error);
                     });
             },
-        }))
-    })
+        }
+    }
 </script>
