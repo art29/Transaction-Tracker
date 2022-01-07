@@ -72,14 +72,18 @@
             convertedPrice: 0.00,
 
             changeCurrency: async function() {
-                await fetch(`https://freecurrencyapi.net/api/v2/latest?apikey=e65d3140-6968-11ec-9481-f9819ded001b&base_currency=${this.currency}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        this.convertedPrice = (data.data['CAD'] * this.inputPrice).toFixed(2);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
+                if (this.currency === 'CAD') {
+                    this.convertedPrice = this.inputPrice.toFixed(2);
+                } else {
+                    await fetch(`https://freecurrencyapi.net/api/v2/latest?apikey=e65d3140-6968-11ec-9481-f9819ded001b&base_currency=${this.currency}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.convertedPrice = (data.data['CAD'] * this.inputPrice).toFixed(2);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
             },
         }
     }
